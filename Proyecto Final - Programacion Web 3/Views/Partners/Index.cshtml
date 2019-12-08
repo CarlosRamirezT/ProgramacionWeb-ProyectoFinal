@@ -1,0 +1,121 @@
+﻿@model IEnumerable<Proyecto_Final___Programacion_Web_3.Models.partner>
+
+@{
+    ViewBag.Title = "Socios";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lista de Socios</h2>
+
+
+<h4>@Html.ActionLink("Log Out", "../User/Login")</h4>
+<p>@Html.ActionLink("Crear Nuevo Socio", "Create")</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.lastname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idcard)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.birthdate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.afilliate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workplace)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.officeaddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.officephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.partnershipstatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.addmisiondate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.departuredate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            <img src="@Html.DisplayFor(modelItem => item.photo)" width="60" height="60" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idcard)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.phone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.age)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.birthdate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.afilliate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.workplace)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.officeaddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.officephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.partnershipstatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.addmisiondate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.departuredate)
+        </td>
+        <td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id = item.idPartner }) |
+            @Html.ActionLink("Detalles", "Details", new { id = item.idPartner }) |
+            @Html.ActionLink("Borrar", "Delete", new { id = item.idPartner })
+        </td>
+    </tr>
+}
+
+</table>

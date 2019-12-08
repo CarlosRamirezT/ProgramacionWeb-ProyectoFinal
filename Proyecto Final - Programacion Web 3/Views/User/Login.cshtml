@@ -1,0 +1,47 @@
+﻿@model Proyecto_Final___Programacion_Web_3.Models.user
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<link href="~/css/fontawesome-all.css" rel="stylesheet" />
+<link href="~/css/login-style.css" rel="stylesheet" />
+<h1></h1>
+<div class=" w3l-login-form">
+    <h2>Login</h2>
+    <form action="Verify" method="Post">
+
+        <div class=" w3l-form-group">
+            <label>Email:</label>
+            <div class="group">
+                <i class="fas fa-user"></i>
+                <input type="text" class="form-control" name="email" placeholder="Username" required="required" />
+            </div>
+        </div>
+        <div class=" w3l-form-group">
+            <label>Password:</label>
+            <div class="group">
+                <i class="fas fa-unlock"></i>
+                <input type="password" class="form-control" name="password" placeholder="Password" required="required" />
+            </div>
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <p class=" w3l-register-p">No tienes una cuenta? @Html.ActionLink("Crear Cuenta", "AddOrEdit")</p>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <label class="label-success">@ViewBag.SuccessMessage</label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <label class="label-danger">@ViewBag.ErrorMessage</label>
+        </div>
+    </div>
+
+</div>
+
+
+

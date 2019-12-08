@@ -1,0 +1,155 @@
+﻿@model Proyecto_Final___Programacion_Web_3.Models.partner
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>partner</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idcard)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idcard)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.birthdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.birthdate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.workplace)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.workplace)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.officeaddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.officeaddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.officephone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.officephone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.partnershipstatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.partnershipstatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.addmisiondate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.addmisiondate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.departuredate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.departuredate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gender1.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gender1.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.partner1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.partner1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.partnership1.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.partnership1.description)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idPartner }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

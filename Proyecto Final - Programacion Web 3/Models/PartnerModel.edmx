@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="web_finalModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="genders">
+          <Key>
+            <PropertyRef Name="idGender" />
+          </Key>
+          <Property Name="idGender" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="char" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityType Name="partners">
+          <Key>
+            <PropertyRef Name="idPartner" />
+          </Key>
+          <Property Name="idPartner" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="lastname" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="idcard" Type="varchar" MaxLength="13" />
+          <Property Name="photo" Type="varchar(max)" />
+          <Property Name="address" Type="varchar" MaxLength="80" />
+          <Property Name="phone" Type="varchar" MaxLength="12" />
+          <Property Name="gender" Type="int" />
+          <Property Name="age" Type="int" Nullable="false" />
+          <Property Name="birthdate" Type="date" />
+          <Property Name="afilliate" Type="int" />
+          <Property Name="partnership" Type="int" Nullable="false" />
+          <Property Name="workplace" Type="varchar" MaxLength="60" />
+          <Property Name="officeaddress" Type="varchar" MaxLength="80" />
+          <Property Name="officephone" Type="varchar" MaxLength="12" />
+          <Property Name="partnershipstatus" Type="int" Nullable="false" />
+          <Property Name="addmisiondate" Type="date" />
+          <Property Name="departuredate" Type="date" />
+        </EntityType>
+        <EntityType Name="partnerships">
+          <Key>
+            <PropertyRef Name="idPartnership" />
+          </Key>
+          <Property Name="idPartnership" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_partners_gender">
+          <End Role="genders" Type="Self.genders" Multiplicity="0..1" />
+          <End Role="partners" Type="Self.partners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="partners">
+              <PropertyRef Name="gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partners_idAfilliate">
+          <End Role="partners" Type="Self.partners" Multiplicity="0..1" />
+          <End Role="partners1" Type="Self.partners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partners">
+              <PropertyRef Name="idPartner" />
+            </Principal>
+            <Dependent Role="partners1">
+              <PropertyRef Name="afilliate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partners_idPartnership">
+          <End Role="partnerships" Type="Self.partnerships" Multiplicity="1" />
+          <End Role="partners" Type="Self.partners" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partnerships">
+              <PropertyRef Name="idPartnership" />
+            </Principal>
+            <Dependent Role="partners">
+              <PropertyRef Name="partnership" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="web_finalModelStoreContainer">
+          <EntitySet Name="genders" EntityType="Self.genders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="partners" EntityType="Self.partners" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="partnerships" EntityType="Self.partnerships" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_partners_gender" Association="Self.fk_partners_gender">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="partners" EntitySet="partners" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partners_idAfilliate" Association="Self.fk_partners_idAfilliate">
+            <End Role="partners" EntitySet="partners" />
+            <End Role="partners1" EntitySet="partners" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partners_idPartnership" Association="Self.fk_partners_idPartnership">
+            <End Role="partnerships" EntitySet="partnerships" />
+            <End Role="partners" EntitySet="partners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="web_finalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="gender">
+          <Key>
+            <PropertyRef Name="idGender" />
+          </Key>
+          <Property Name="idGender" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="partners" Relationship="Self.fk_partners_gender" FromRole="genders" ToRole="partners" />
+        </EntityType>
+        <EntityType Name="partner">
+          <Key>
+            <PropertyRef Name="idPartner" />
+          </Key>
+          <Property Name="idPartner" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastname" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idcard" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="phone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="Int32" />
+          <Property Name="age" Type="Int32" Nullable="false" />
+          <Property Name="birthdate" Type="DateTime" Precision="0" />
+          <Property Name="afilliate" Type="Int32" />
+          <Property Name="partnership" Type="Int32" Nullable="false" />
+          <Property Name="workplace" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+          <Property Name="officeaddress" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="officephone" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="partnershipstatus" Type="Int32" Nullable="false" />
+          <Property Name="addmisiondate" Type="DateTime" Precision="0" />
+          <Property Name="departuredate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="gender1" Relationship="Self.fk_partners_gender" FromRole="partners" ToRole="genders" />
+          <NavigationProperty Name="partners1" Relationship="Self.fk_partners_idAfilliate" FromRole="partners" ToRole="partners1" />
+          <NavigationProperty Name="partner1" Relationship="Self.fk_partners_idAfilliate" FromRole="partners1" ToRole="partners" />
+          <NavigationProperty Name="partnership1" Relationship="Self.fk_partners_idPartnership" FromRole="partners" ToRole="partnerships" />
+        </EntityType>
+        <EntityType Name="partnership">
+          <Key>
+            <PropertyRef Name="idPartnership" />
+          </Key>
+          <Property Name="idPartnership" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="partners" Relationship="Self.fk_partners_idPartnership" FromRole="partnerships" ToRole="partners" />
+        </EntityType>
+        <Association Name="fk_partners_gender">
+          <End Role="genders" Type="Self.gender" Multiplicity="0..1" />
+          <End Role="partners" Type="Self.partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="genders">
+              <PropertyRef Name="idGender" />
+            </Principal>
+            <Dependent Role="partners">
+              <PropertyRef Name="gender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partners_idAfilliate">
+          <End Role="partners" Type="Self.partner" Multiplicity="0..1" />
+          <End Role="partners1" Type="Self.partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partners">
+              <PropertyRef Name="idPartner" />
+            </Principal>
+            <Dependent Role="partners1">
+              <PropertyRef Name="afilliate" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_partners_idPartnership">
+          <End Role="partnerships" Type="Self.partnership" Multiplicity="1" />
+          <End Role="partners" Type="Self.partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="partnerships">
+              <PropertyRef Name="idPartnership" />
+            </Principal>
+            <Dependent Role="partners">
+              <PropertyRef Name="partnership" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PartnersEntiti" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="genders" EntityType="Self.gender" />
+          <EntitySet Name="partners" EntityType="Self.partner" />
+          <EntitySet Name="partnerships" EntityType="Self.partnership" />
+          <AssociationSet Name="fk_partners_gender" Association="Self.fk_partners_gender">
+            <End Role="genders" EntitySet="genders" />
+            <End Role="partners" EntitySet="partners" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partners_idAfilliate" Association="Self.fk_partners_idAfilliate">
+            <End Role="partners" EntitySet="partners" />
+            <End Role="partners1" EntitySet="partners" />
+          </AssociationSet>
+          <AssociationSet Name="fk_partners_idPartnership" Association="Self.fk_partners_idPartnership">
+            <End Role="partnerships" EntitySet="partnerships" />
+            <End Role="partners" EntitySet="partners" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="web_finalModelStoreContainer" CdmEntityContainer="PartnersEntiti">
+          <EntitySetMapping Name="genders">
+            <EntityTypeMapping TypeName="web_finalModel.gender">
+              <MappingFragment StoreEntitySet="genders">
+                <ScalarProperty Name="idGender" ColumnName="idGender" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partners">
+            <EntityTypeMapping TypeName="web_finalModel.partner">
+              <MappingFragment StoreEntitySet="partners">
+                <ScalarProperty Name="idPartner" ColumnName="idPartner" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="lastname" ColumnName="lastname" />
+                <ScalarProperty Name="idcard" ColumnName="idcard" />
+                <ScalarProperty Name="photo" ColumnName="photo" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="age" ColumnName="age" />
+                <ScalarProperty Name="birthdate" ColumnName="birthdate" />
+                <ScalarProperty Name="afilliate" ColumnName="afilliate" />
+                <ScalarProperty Name="partnership" ColumnName="partnership" />
+                <ScalarProperty Name="workplace" ColumnName="workplace" />
+                <ScalarProperty Name="officeaddress" ColumnName="officeaddress" />
+                <ScalarProperty Name="officephone" ColumnName="officephone" />
+                <ScalarProperty Name="partnershipstatus" ColumnName="partnershipstatus" />
+                <ScalarProperty Name="addmisiondate" ColumnName="addmisiondate" />
+                <ScalarProperty Name="departuredate" ColumnName="departuredate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="partnerships">
+            <EntityTypeMapping TypeName="web_finalModel.partnership">
+              <MappingFragment StoreEntitySet="partnerships">
+                <ScalarProperty Name="idPartnership" ColumnName="idPartnership" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
