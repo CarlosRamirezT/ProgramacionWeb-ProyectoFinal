@@ -1,0 +1,41 @@
+﻿@model Proyecto_Final___Programacion_Web_3.Models.user
+
+@{
+    ViewBag.Title = "Eliminar Usuario";
+    Layout = "~/Views/Shared/_Layout-Inside.cshtml";
+}
+
+<h2>Eliminar Usuario</h2>
+
+<h3>Esta seguro que desea eliminar este usuario?</h3>
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar Usuario" class="btn btn-default" /> |
+            @Html.ActionLink("Volver a Usuarios", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,35 @@
+﻿@model Proyecto_Final___Programacion_Web_3.Models.user
+
+@{
+    ViewBag.Title = "Detalles Usuario";
+    Layout = "~/Views/Shared/_Layout-Inside.cshtml";
+}
+
+<h2>Detalles Usuario</h2>
+
+<div>
+    <h4>Usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.idUser }) |
+    @Html.ActionLink("Volver a Usuarios", "Index")
+</p>
