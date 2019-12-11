@@ -50,7 +50,7 @@ namespace Proyecto_Final___Programacion_Web_3.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idPartner,name,lastname,idcard,photo,address,phone,gender,age,birthdate,afilliate,partnership,workplace,officeaddress,officephone,partnershipstatus,addmisiondate,departuredate")] partner partner)
+        public ActionResult Create([Bind(Include = "name,lastname,idcard,photo,address,phone,gender,age,birthdate,afilliate,partnership,workplace,officeaddress,officephone,partnershipstatus,addmisiondate,departuredate")] partner partner)
         {
             if (ModelState.IsValid)
             {

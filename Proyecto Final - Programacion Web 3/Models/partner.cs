@@ -49,6 +49,7 @@ namespace Proyecto_Final___Programacion_Web_3.Models
         [Required(ErrorMessage = "Proporcione La Edad")]
         public int age { get; set; }
         [DisplayName("Nacimiento")]
+        [DataType(DataType.Date)]
         [Required(ErrorMessage = "Proporcione la Fecha de Nacimiento  yyyy-mm-dd")]
         public Nullable<System.DateTime> birthdate { get; set; }
         [DisplayName("Afiliado")]
@@ -70,14 +71,19 @@ namespace Proyecto_Final___Programacion_Web_3.Models
         public int partnershipstatus { get; set; }
         [DisplayName("Admisión")]
         [Required(ErrorMessage = "Proporcione la Fecha de Admision yyyy-mm-dd")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> addmisiondate { get; set; }
         [DisplayName("Salida")]
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> departuredate { get; set; }
     
+        [DisplayName("Genero")]
         public virtual gender gender1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<partner> partners1 { get; set; }
+        [DisplayName("Afiliado")]
         public virtual partner partner1 { get; set; }
+        [DisplayName("Tipo Membresia")]
         public virtual partnership partnership1 { get; set; }
     }
 }
